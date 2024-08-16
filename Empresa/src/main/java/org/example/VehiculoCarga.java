@@ -1,10 +1,12 @@
 package org.example;
 
-public class VehiculoCarga {
+public class VehiculoCarga extends Vehiculo {
     private double capacidadCarga;
     private int numeroEjes;
+    private String placa;
 
-    public VehiculoCarga(double capacidad, int numeroEjes) {
+    public VehiculoCarga(String marca, String modelo, String placa, String color, double capacidad, int numeroEjes) {
+        super(marca, modelo, placa, color);
         this.capacidadCarga = capacidad;
         this.numeroEjes = numeroEjes;
     }
@@ -20,4 +22,10 @@ public class VehiculoCarga {
     public int getNumeroEjes() {
         return numeroEjes;
     }
+
+    public void setNumeroEjes(int numeroEjes) {
+        this.numeroEjes = numeroEjes;
+    }
 }
+
+

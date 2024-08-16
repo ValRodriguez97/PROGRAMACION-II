@@ -31,4 +31,30 @@ public class EmpresaTransporte {
     public Collection<Usuario> getListaUsuarios() {
         return listaUsuarios;
     }
+
+    public void agregarPropietario(Propietario propietario) {
+        listaPropietarios.add(propietario);
+    }
+
+    public void agregarVehiculoTransporte(VehiculoTransporte vehiculoTransporte) {
+        listaVehiculoTransportes.add(vehiculoTransporte);
+    }
+
+    public void agregarUsuario(Usuario usuario) {
+        listaUsuarios.add(usuario);
+    }
+
+    public void agregarVehiculoCarga(VehiculoCarga vehiculoCarga) {
+        listaVehiculoCargas.add(vehiculoCarga);
+    }
+
+    public VehiculoTransporte consultarVehiculo (String placa){
+        for (VehiculoTransporte vehiculoTransporte : listaVehiculoTransportes){
+            if (vehiculoTransporte.getPlaca().equals(placa)){
+                return vehiculoTransporte;
+            }
+        }
+        return null;
+    }
+
 }
