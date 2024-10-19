@@ -1,8 +1,9 @@
 package co.edu.uniquindio.preparciali.preparcialii.model;
 
+import co.edu.uniquindio.preparciali.preparcialii.service.IComponenteObjeto;
 import co.edu.uniquindio.preparciali.preparcialii.model.builder.ObjetoBuilder;
 
-public class Objeto {
+public abstract class Objeto implements IComponenteObjeto {
     private String nombre;
     private Prestamo prestamoAsociado;
 
@@ -29,5 +30,10 @@ public class Objeto {
 
     public void setPrestamoAsociado(Prestamo prestamoAsociado) {
         this.prestamoAsociado = prestamoAsociado;
+    }
+
+    @Override
+    public void mostrarCaracteristicas(){
+        System.out.println("Nombre: " + nombre);
     }
 }

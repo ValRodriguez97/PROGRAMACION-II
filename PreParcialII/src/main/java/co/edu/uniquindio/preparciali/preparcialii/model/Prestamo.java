@@ -1,12 +1,13 @@
 package co.edu.uniquindio.preparciali.preparcialii.model;
 
 import co.edu.uniquindio.preparciali.preparcialii.model.builder.PrestamoBuilder;
+import co.edu.uniquindio.preparciali.preparcialii.service.IEntrega;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Prestamo {
+public abstract class Prestamo {
     private String numeroPrestamo;
     private LocalDate fechaPrestamo;
     private LocalDate fechaEntrega ;
@@ -14,8 +15,9 @@ public class Prestamo {
     private Cliente clienteAsociado;
     private List<Objeto> listaObjetosAsociados;
     private Empleado empleadoAsociado;
+    protected IEntrega entrega;
 
-    public Prestamo(String numeroPrestamo, LocalDate fechaPrestamo, LocalDate fechaEntrega, String descripcion, Cliente clienteAsociado, Empleado empleadoAsociado) {
+    public Prestamo(String numeroPrestamo, LocalDate fechaPrestamo, LocalDate fechaEntrega, String descripcion, Cliente clienteAsociado, Empleado empleadoAsociado, IEntrega entrega) {
         this.numeroPrestamo = numeroPrestamo;
         this.fechaPrestamo = fechaPrestamo;
         this.fechaEntrega = fechaEntrega;
@@ -23,6 +25,7 @@ public class Prestamo {
         this.clienteAsociado = clienteAsociado;
         this.listaObjetosAsociados = new ArrayList<>();
         this.empleadoAsociado = empleadoAsociado;
+        this.entrega = entrega;
     }
 
     public static PrestamoBuilder builder(){
@@ -84,4 +87,12 @@ public class Prestamo {
     public void setEmpleadoAsociado(Empleado empleadoAsociado) {
         this.empleadoAsociado = empleadoAsociado;
     }
+
+    public abstract void procesarPrestamo();
+
+    public void entregar(){
+        entrega.entregar();
+    }
+
+    public  abstract void condicionVencimiento();
 }
