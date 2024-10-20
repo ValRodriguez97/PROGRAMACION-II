@@ -2,7 +2,7 @@ package co.edu.uniquindio.preparciali.preparcialii.model.Composite;
 
 import co.edu.uniquindio.preparciali.preparcialii.model.Objeto;
 import co.edu.uniquindio.preparciali.preparcialii.model.Prestamo;
-
+//Composite
 public class ObjetoSimple  extends Objeto {
 
     public ObjetoSimple(String nombre, Prestamo prestamoAsociado) {
