@@ -95,4 +95,6 @@ public abstract class Prestamo {
     }
 
     public  abstract void condicionVencimiento();
+
+    public abstract double costo();
 }
