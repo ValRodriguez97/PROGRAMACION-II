@@ -11,7 +11,10 @@ import co.edu.uniquindio.preparcial2.preparcial2.service.ICrudPrestamo;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class PrestamoUQ implements ICrudCliente, ICrudPrestamo, ICrudEmpleado, ICrudObjeto {
     private String nombre;
@@ -327,5 +330,37 @@ public class PrestamoUQ implements ICrudCliente, ICrudPrestamo, ICrudEmpleado, I
             }
         }
         return empleadoExistente;
+    }
+
+    public List<Objeto> objetosMasPrestados(int cantidad){
+        Map<Objeto, Integer> contarPrestamos = new HashMap<>();
+
+        for(Prestamo prestamo : listaPrestamos){
+            for(Objeto objeto : prestamo.getListObjetosAsociados()){
+                contarPrestamos.put(objeto, contarPrestamos.getOrDefault(objeto, 0) + 1);
+            }
+        }
+
+        return contarPrestamos.entrySet().stream().filter(entry -> entry.getValue() > cantidad).map(Map.Entry::getKey).collect(Collectors.toList());
+    }
+
+    public List<Cliente> getClientesConVariosPrestamos( int minimoPrestamos, int maximoPrestamos){
+        return listaClientes.stream().filter(cliente -> cliente.totalPrestamos() > minimoPrestamos && cliente.totalPrestamos() <= maximoPrestamos ).collect(Collectors.toList());
+    }
+
+    public void objetosDisponible(){
+        int disponibles = 0;
+        int nodisponibles = 0;
+
+        for(Objeto objeto : listaObjetos){
+            if (objeto.isDisponible()){
+                disponibles++;
+            } else {
+                nodisponibles++;
+            }
+        }
+
+        System.out.println("Disponibles: " + disponibles);
+        System.out.println("Nodisponibles: " + nodisponibles);
     }
 }

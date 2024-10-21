@@ -6,10 +6,12 @@ import co.edu.uniquindio.preparcial2.preparcial2.service.IObjeto;
 public class Objeto implements IObjeto {
     private String nombre;
     private Prestamo prestamoAsociado;
+    private boolean disponible;
 
     public Objeto(String nombre, Prestamo prestamoAsociado) {
         this.nombre = nombre;
         this.prestamoAsociado = prestamoAsociado;
+        this.disponible = true;
     }
 
     public static ObjetoBuilder builder(){
@@ -35,10 +37,19 @@ public class Objeto implements IObjeto {
 
     @Override
     public void prestar(Cliente cliente) {
-        if(prestamoAsociado != null){
-            System.out.println("El objeto" + getNombre() + " ya ha sido prestado");
-            return;
+        if(disponible){
+           disponible = false;
+           System.out.println("Se ha prestado exitosamente el objeto");
         }
-        System.out.println("Se le ha prestado el objeto exitosamente");
+        System.out.println("El objeto no se encuentra disponible");
+    }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    @Override
+    public void devolver(){
+        disponible = true;
     }
 }
