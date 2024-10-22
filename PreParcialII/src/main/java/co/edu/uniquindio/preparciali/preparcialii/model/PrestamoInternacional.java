@@ -27,4 +27,9 @@ public class PrestamoInternacional extends  Prestamo{
             System.out.println("Todavia hay plazo para el prestamo");
         }
     }
+
+    @Override
+    public double costo() {
+        return 0;
+    }
 }

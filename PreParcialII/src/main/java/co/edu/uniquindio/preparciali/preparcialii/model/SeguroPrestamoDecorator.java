@@ -1,5 +1,7 @@
 package co.edu.uniquindio.preparciali.preparcialii.model;
 
+import co.edu.uniquindio.preparciali.preparcialii.model.Decorator.PrestamoDecorator;
+
 public class SeguroPrestamoDecorator extends PrestamoDecorator {
     private  double costoSeguroPrestamo;
 

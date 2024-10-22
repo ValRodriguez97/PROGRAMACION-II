@@ -15,7 +15,7 @@ public abstract class Prestamo {
     private Cliente clienteAsociado;
     private List<Objeto> listaObjetosAsociados;
     private Empleado empleadoAsociado;
-    protected IEntrega entrega;
+    public IEntrega entrega;
 
     public Prestamo(String numeroPrestamo, LocalDate fechaPrestamo, LocalDate fechaEntrega, String descripcion, Cliente clienteAsociado, Empleado empleadoAsociado, IEntrega entrega) {
         this.numeroPrestamo = numeroPrestamo;

@@ -28,4 +28,9 @@ public class PrestamoLocal extends Prestamo{
             System.out.println("Todavia hay plazo para el pago del prestamo");
         }
     }
+
+    @Override
+    public double costo() {
+        return 0;
+    }
 }

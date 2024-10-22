@@ -1,7 +1,7 @@
 package co.edu.uniquindio.preparciali.preparcialii.model;
 
 import co.edu.uniquindio.preparciali.preparcialii.service.ICliente;
-
+//Adapter
 public class EmpleadoAdapter implements ICliente {
     private Empleado empleado;
 

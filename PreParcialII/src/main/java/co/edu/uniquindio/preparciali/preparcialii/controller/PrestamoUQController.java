@@ -1,4 +1,6 @@
 package co.edu.uniquindio.preparciali.preparcialii.controller;
 
-public class PrestamoUQController {
+import co.edu.uniquindio.preparciali.preparcialii.service.IPrestamosUQControllerService;
+
+public class PrestamoUQController implements IPrestamosUQControllerService {
 }

@@ -1,6 +1,6 @@
-package co.edu.uniquindio.preparciali.preparcialii.model;
+package co.edu.uniquindio.preparciali.preparcialii.model.Decorator;
 
-import co.edu.uniquindio.preparciali.preparcialii.service.IEntrega;
+import co.edu.uniquindio.preparciali.preparcialii.model.Prestamo;
 
 import java.time.LocalDate;
 
