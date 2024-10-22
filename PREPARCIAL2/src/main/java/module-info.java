@@ -13,4 +13,6 @@ module co.edu.uniquindio.preparcial2.preparcial2 {
 
     opens co.edu.uniquindio.preparcial2.preparcial2 to javafx.fxml;
     exports co.edu.uniquindio.preparcial2.preparcial2;
+    exports co.edu.uniquindio.preparcial2.preparcial2.viewController;
+    opens co.edu.uniquindio.preparcial2.preparcial2.viewController to javafx.fxml;
 }
