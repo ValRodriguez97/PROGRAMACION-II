@@ -8,9 +8,8 @@ public class Objeto implements IObjeto {
     private Prestamo prestamoAsociado;
     private boolean disponible;
 
-    public Objeto(String nombre, Prestamo prestamoAsociado) {
+    public Objeto(String nombre) {
         this.nombre = nombre;
-        this.prestamoAsociado = prestamoAsociado;
         this.disponible = true;
     }
 
@@ -40,8 +39,9 @@ public class Objeto implements IObjeto {
         if(disponible){
            disponible = false;
            System.out.println("Se ha prestado exitosamente el objeto");
+        } else{
+            System.out.println("El objeto no se encuentra disponible");
         }
-        System.out.println("El objeto no se encuentra disponible");
     }
 
     public boolean isDisponible() {

@@ -24,4 +24,8 @@ public class Empleado extends Persona{
     public void setListPrestamosAsociados(List<Prestamo> listPrestamosAsociados) {
         this.listPrestamosAsociados = listPrestamosAsociados;
     }
+
+    public void agregarPrestamo(Prestamo prestamo){
+        this.listPrestamosAsociados.add(prestamo);
+    }
 }

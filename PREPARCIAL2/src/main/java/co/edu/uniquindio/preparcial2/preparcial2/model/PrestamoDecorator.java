@@ -17,4 +17,6 @@ public class PrestamoDecorator extends Prestamo {
     public void procesarPrestamo(){
         prestamo.procesarPrestamo();
     }
+
+
 }

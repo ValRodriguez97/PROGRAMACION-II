@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Prestamo {
+public abstract class Prestamo  {
     private String numeroPrestamo;
     private LocalDate fechaPrestamo;
     private LocalDate fechaEntrega;
@@ -28,9 +28,6 @@ public abstract class Prestamo {
         this.entrega = entrega;
     }
 
-    public static PrestamoBuilder builder(){
-        return new PrestamoBuilder();
-    }
 
     public String getNumeroPrestamo() {
         return numeroPrestamo;
@@ -96,6 +93,12 @@ public abstract class Prestamo {
         this.entrega = entrega;
     }
 
+    public void agregarObjeto(Objeto objeto) {
+        this.listObjetosAsociados.add(objeto);
+        objeto.setPrestamoAsociado(this);
+    }
+
     public abstract void procesarPrestamo();
     public abstract double costo();
+
 }

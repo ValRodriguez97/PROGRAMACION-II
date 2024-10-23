@@ -1,19 +1,28 @@
 package co.edu.uniquindio.preparcial2.preparcial2.model.Composite;
+
+import co.edu.uniquindio.preparcial2.preparcial2.model.Objeto;
+
+import java.util.List;
+
 //Composite
 public class ObjetoSimple extends  ObjectComponent{
-    private String nombre;
+    private Objeto objeto;
 
-    public ObjetoSimple(String nombre) {
-        this.nombre = nombre;
+    public ObjetoSimple(Objeto objeto){
+        this.objeto = objeto;
     }
 
     @Override
-    public String getNombre() {
-        return nombre;
+    public void agregarObjeto(Objeto objeto){
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public Objeto getObjeto(){
+        return objeto;
     }
 
     @Override
-    public double getCosto(){
-        return 10;
+    public List<Objeto> obtenerObjetos(){
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

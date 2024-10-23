@@ -8,6 +8,10 @@ import java.util.List;
 public class EntregaLocal implements IEntrega {
         private List<Objeto> objetos;
 
+        public EntregaLocal(List<Objeto> objetos) {
+            this.objetos = objetos;
+        }
+
     @Override
     public void entregar(){
         for (Objeto objeto : objetos){

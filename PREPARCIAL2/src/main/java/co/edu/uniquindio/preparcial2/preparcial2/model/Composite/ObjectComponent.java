@@ -1,8 +1,11 @@
 package co.edu.uniquindio.preparcial2.preparcial2.model.Composite;
+
+import co.edu.uniquindio.preparcial2.preparcial2.model.Objeto;
+
+import java.util.List;
+
 //Composite
 public abstract class ObjectComponent {
-    protected String nombre;
-
-    public abstract String getNombre();
-    public abstract double getCosto();
+    public abstract void agregarObjeto(Objeto objeto);
+    public abstract List<Objeto> obtenerObjetos();
 }

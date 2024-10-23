@@ -14,39 +14,34 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class ProxyObject implements IObjeto {
+public class ProxyObject extends  Objeto{
+    private boolean accesoPermitido;
     private Objeto objeto;
 
-    public ProxyObject(Objeto objeto) {
-        this.objeto = objeto;
+    public ProxyObject(String nombre, boolean accesoPermitido) {
+        super(nombre);
+        this.accesoPermitido = accesoPermitido;
+        this.objeto = new Objeto(nombre);
     }
 
     @Override
-    public String getNombre(){
+    public void setPrestamoAsociado(Prestamo prestamo){
+       verificarAcceso();
+       objeto.setPrestamoAsociado(prestamo);
+    }
+
+    @Override
+    public String getNombre() {
         return objeto.getNombre();
     }
 
-    @Override
-    public void prestar(Cliente cliente){
-        if(accesoCliente(cliente)){
-            objeto.prestar(cliente);
-            registrarAcceso(cliente);
-        } else {
-            System.out.println("Se ha denegado el prestamo del objeto, el cliente no tiene acceso");
+    private void verificarAcceso(){
+        if(!accesoPermitido){
+            throw new UnsupportedOperationException("Accesso denegado");
         }
     }
 
-    private boolean accesoCliente(Cliente cliente){
-        return cliente.getListPrestamosAsociados().size() < 3;
+    public Objeto getObjeto() {
+        return objeto;
     }
-
-    private void registrarAcceso(Cliente cliente){
-        System.out.println("El cliente " + cliente.getNombre() + " ha solicitado el prestamo del objeto " + objeto.getNombre());
-    }
-
-    @Override
-    public void devolver(){
-        objeto.devolver();
-    }
-
 }

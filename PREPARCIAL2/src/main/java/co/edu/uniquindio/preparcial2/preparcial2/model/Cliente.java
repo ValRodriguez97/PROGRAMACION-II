@@ -25,6 +25,10 @@ public class Cliente extends Persona{
         this.listPrestamosAsociados = listPrestamosAsociados;
     }
 
+    public void addPrestamo(Prestamo prestamo){
+        this.listPrestamosAsociados.add(prestamo);
+    }
+
     public int totalPrestamos(){
         return listPrestamosAsociados.size();
     }

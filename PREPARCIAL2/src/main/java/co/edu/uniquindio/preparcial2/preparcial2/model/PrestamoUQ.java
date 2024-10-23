@@ -1,9 +1,5 @@
 package co.edu.uniquindio.preparcial2.preparcial2.model;
 
-import co.edu.uniquindio.preparcial2.preparcial2.model.Cliente;
-import co.edu.uniquindio.preparcial2.preparcial2.model.Empleado;
-import co.edu.uniquindio.preparcial2.preparcial2.model.Objeto;
-import co.edu.uniquindio.preparcial2.preparcial2.model.Prestamo;
 import co.edu.uniquindio.preparcial2.preparcial2.service.ICrudCliente;
 import co.edu.uniquindio.preparcial2.preparcial2.service.ICrudEmpleado;
 import co.edu.uniquindio.preparcial2.preparcial2.service.ICrudObjeto;
@@ -113,7 +109,7 @@ public class PrestamoUQ implements ICrudCliente, ICrudPrestamo, ICrudEmpleado, I
 
     @Override
     public List<Objeto> listObjetos(){
-        return List.of();
+        return new ArrayList<>(listaObjetos);
     }
 
     @Override
@@ -139,6 +135,11 @@ public class PrestamoUQ implements ICrudCliente, ICrudPrestamo, ICrudEmpleado, I
     public boolean createPrestamo(Prestamo prestamo){
         if (prestamo != null) {
             getListaPrestamos().add(prestamo);
+            prestamo.getClienteAsociado().addPrestamo(prestamo);
+            prestamo.getEmpleadoAsociado().agregarPrestamo(prestamo);
+            for (Objeto objeto : prestamo.getListObjetosAsociados()){
+                objeto.setPrestamoAsociado(prestamo);
+            }
             return true;
         }
         return false;
@@ -180,7 +181,7 @@ public class PrestamoUQ implements ICrudCliente, ICrudPrestamo, ICrudEmpleado, I
 
     @Override
     public List<Prestamo> listPrestamos(){
-        return List.of();
+        return new ArrayList<>(listaPrestamos);
     }
 
     @Override
@@ -245,7 +246,7 @@ public class PrestamoUQ implements ICrudCliente, ICrudPrestamo, ICrudEmpleado, I
 
     @Override
     public List<Cliente> listClientes(){
-        return List.of();
+        return new ArrayList<>(listaClientes);
     }
 
     @Override
@@ -310,12 +311,12 @@ public class PrestamoUQ implements ICrudCliente, ICrudPrestamo, ICrudEmpleado, I
 
     @Override
     public List<Empleado> listEmpleados(){
-        return List.of();
+        return new ArrayList<>(listaEmpleados);
     }
 
     @Override
     public boolean verificarEmpleadoExistente(String cedula){
-        if (verificarCliente(cedula) == null){
+        if (verificarEmpleado(cedula) == null){
             return true;
         }
         return false;
@@ -363,4 +364,9 @@ public class PrestamoUQ implements ICrudCliente, ICrudPrestamo, ICrudEmpleado, I
         System.out.println("Disponibles: " + disponibles);
         System.out.println("Nodisponibles: " + nodisponibles);
     }
+
+    public int totalPrestamos(){
+        return getListaPrestamos().size();
+    }
+
 }

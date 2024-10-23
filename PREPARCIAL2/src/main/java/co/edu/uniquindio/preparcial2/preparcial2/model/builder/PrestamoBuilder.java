@@ -3,16 +3,18 @@ package co.edu.uniquindio.preparcial2.preparcial2.model.builder;
 import co.edu.uniquindio.preparcial2.preparcial2.model.Cliente;
 import co.edu.uniquindio.preparcial2.preparcial2.model.Empleado;
 import co.edu.uniquindio.preparcial2.preparcial2.model.Prestamo;
+import co.edu.uniquindio.preparcial2.preparcial2.service.IEntrega;
 
 import java.time.LocalDate;
 
-public class PrestamoBuilder {
+public abstract class PrestamoBuilder  <T extends PrestamoBuilder<T>> {
     protected String numeroPrestamo;
     protected LocalDate fechaPrestamo;
     protected  LocalDate fechaEntrega;
     protected String descripcion;
     protected Cliente clienteAsociado;
     protected Empleado empleadoAsociado;
+    protected IEntrega entrega;
 
     public PrestamoBuilder numeroPrestamo(String numeroPrestamo) {
         this.numeroPrestamo = numeroPrestamo;
@@ -44,8 +46,11 @@ public class PrestamoBuilder {
         return this;
     }
 
-    public Prestamo build() {
-        return new Prestamo(numeroPrestamo, fechaPrestamo, fechaEntrega,descripcion, clienteAsociado, empleadoAsociado);
+    public PrestamoBuilder entrega(IEntrega entrega) {
+        this.entrega = entrega;
+        return this;
     }
+
+    public abstract Prestamo build() ;
 
 }

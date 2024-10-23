@@ -1,5 +1,6 @@
 package co.edu.uniquindio.preparcial2.preparcial2.model;
 
+import co.edu.uniquindio.preparcial2.preparcial2.model.builder.PrestamoBuilder;
 import co.edu.uniquindio.preparcial2.preparcial2.service.IEntrega;
 
 import java.time.LocalDate;
@@ -9,6 +10,7 @@ public class PrestamoInternacional extends Prestamo {
     public PrestamoInternacional(String numeroPrestamo, LocalDate fechaPrestamo, LocalDate fechaEntrega, String descripcion, Cliente clienteAsociado, Empleado empleadoAsociado, IEntrega entrega) {
         super(numeroPrestamo, fechaPrestamo, fechaEntrega, descripcion, clienteAsociado, empleadoAsociado, entrega);
     }
+
 
     @Override
     public void procesarPrestamo(){
