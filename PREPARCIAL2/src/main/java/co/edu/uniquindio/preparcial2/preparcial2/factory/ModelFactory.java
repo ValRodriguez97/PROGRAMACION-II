@@ -16,6 +16,7 @@ public class ModelFactory implements IModelFactoryService {
     private static ModelFactory instance;
     PrestamoUQ prestamoUQ;
     PrestamoUQMappingImplt mapper;
+    SistemaPrestamosFacade facade;
 
     public static ModelFactory getInstance() {
         if (instance == null) {
@@ -27,6 +28,7 @@ public class ModelFactory implements IModelFactoryService {
     private ModelFactory() {
         mapper = new PrestamoUQMappingImplt();
         prestamoUQ = inicializarDatos();
+        facade = new SistemaPrestamosFacade(prestamoUQ);
     }
 
     public PrestamoUQ getPrestamoUQ() {
@@ -150,6 +152,32 @@ public class ModelFactory implements IModelFactoryService {
         return true;
     }
 
+    @Override
+    public void objetosMasPrestados(int cantidad){
+        facade.buscarObjetosMasPrestados(cantidad);
+    }
+
+    @Override
+    public void realizarPrestamo(ClienteDto clienteDto, EmpleadoDto empleadoDto, PrestamoDto prestamoDto){
+        Prestamo newPrestamo = mapper.prestamoDtoToPrestamo(prestamoDto);
+        facade.realizarPrestamo(newPrestamo.getClienteAsociado(), newPrestamo.getEmpleadoAsociado(), newPrestamo);
+    }
+
+   @Override
+    public void clientesConVariosPrestamos(int minPrestamos, int maxPrestamos){
+        facade.ClientesConVariosPrestamos(minPrestamos, maxPrestamos);
+   }
+
+   @Override
+    public void objetosDisponibles(){
+        facade.objetosDisponibles();
+   }
+
+   @Override
+    public void totalPrestamos(){
+        facade.totalPrestamos();
+   }
+
     public static PrestamoUQ inicializarDatos() {
         PrestamoUQ prestamoUQ = new PrestamoUQ("Prestamos");
         Cliente cliente1 = Cliente.builder()
@@ -182,21 +210,15 @@ public class ModelFactory implements IModelFactoryService {
                 .build();
 
         //Prestamos
-        Prestamo prestamo1 = Prestamo.builder()
+        /*Prestamo prestamo1 = Prestamo.builder()
                 .numeroPrestamo("1234")
                 .fechaPrestamo(LocalDate.now())
                 .fechaEntrega(LocalDate.of(2024, 11, 02))
                 .descripcion("adiao")
                 .clienteAsociado(cliente1)
                 .empleadoAsociado(empleado2)
-                .build();
+                .build();*/
 
-
-        //Objetos
-        Objeto objeto1 = Objeto.builder()
-                .nombre("TV Samsung")
-                .prestamoAsociado(prestamo1)
-                .build();
         return prestamoUQ;
     }
 }

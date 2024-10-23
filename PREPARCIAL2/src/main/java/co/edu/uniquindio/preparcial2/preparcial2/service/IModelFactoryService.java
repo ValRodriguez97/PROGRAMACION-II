@@ -32,5 +32,10 @@ public interface IModelFactoryService {
     boolean updatePrestamo(String numeroPrestamo, PrestamoDto prestamoDto);
     boolean deletePrestamo(String numeroPrestamo);
 
-    boolean buscarObjetoMasPrestado(int cantidad);
-}
+    boolean objetosMasPrestados(int cantidad);
+     realizarPrestamo(ClienteDto clienteDto, EmpleadoDto empleadoDto,  PrestamoDto prestamoDto);
+    void clientesConVariosPrestamos(int minPrestamos, int maxPrestamos);
+    void objetosDisponibles();
+    void totalPrestamos();
+    }
+

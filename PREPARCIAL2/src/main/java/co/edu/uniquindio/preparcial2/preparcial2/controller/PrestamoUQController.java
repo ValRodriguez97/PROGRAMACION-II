@@ -94,5 +94,11 @@ public class PrestamoUQController implements IPrestamoUQControllerService {
 
     @Override
     public boolean deleteObjeto(String nombre){
-        return modelFactory.deleteObjeto(nombre);    }
+        return modelFactory.deleteObjeto(nombre);
+    }
+
+    @Override
+    public boolean objetosMasPrestados(int cantidad){
+        return modelFactory.objetosMasPrestados(cantidad);
+    }
 }

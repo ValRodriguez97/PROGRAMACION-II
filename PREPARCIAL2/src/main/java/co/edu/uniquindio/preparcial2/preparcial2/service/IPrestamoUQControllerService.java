@@ -29,4 +29,6 @@ public interface IPrestamoUQControllerService {
     boolean addObjeto(ObjetoDto objetoDto);
     boolean updateObjeto(String nombre, ObjetoDto objetoDto);
     boolean deleteObjeto(String nombre);
+
+    boolean objetosMasPrestados(int cantidad);
 }
